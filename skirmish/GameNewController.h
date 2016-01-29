@@ -1,0 +1,13 @@
+//
+//  GameNewController.h
+//  skirmish
+//
+//  Created by Boris Kuznetsov on 16/12/15.
+//  Copyright © 2015 Boris Kuznetsov. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface GameNewController : UIViewController
+
+@end
