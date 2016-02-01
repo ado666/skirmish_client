@@ -36,14 +36,13 @@
     self.user1.text = [[game valueForKey:@"players"][0] valueForKey:@"login"];
     self.user2.text = [[game valueForKey:@"players"][1] valueForKey:@"login"];
     
-    NSDictionary* owner = [[game valueForKey:@"current_round"]valueForKey:@"owner"];
+    NSDictionary* owner = [[game valueForKey:@"current_round"]valueForKey:@"turn"];
     
     NSDictionary *current_round = [game valueForKey:@"current_round"];
-    
+//    NSLog(@"cr %@", game);
     if ([[owner valueForKey:@"userId"] isEqualToNumber:[user valueForKey:@"userId"]]){
         [self.enemy_turn setHidden:YES];
         
-//        NSLog(@" asd %@", [current_round objectForKey:@"theme"]);
         if ([current_round objectForKey:@"theme"] != [NSNull null]){
             [self.selectTheme setHidden:YES];
             [self.Answer setHidden:NO];
@@ -61,16 +60,22 @@
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-//    User *user = appDelegate.user;
+    User *user = appDelegate.user;
     
     if ([keyPath isEqualToString:@"current_round"]) {
         NSDictionary *data = [change valueForKey:@"new"];
-//        NSLog(@"magic %@, or %@", [change valueForKey:@"new"], change);
-        if ([data objectForKey:@"theme"] != NULL){
-            [self.selectTheme setHidden:YES];
-            [self.Answer setHidden:NO];
+        if ([[[data valueForKey:@"turn"] valueForKey:@"userId"] isEqualToNumber:[user valueForKey:@"userId"]]){
+            [self.enemy_turn setHidden:YES];
+            if ([data objectForKey:@"theme"] != NULL){
+                [self.selectTheme setHidden:YES];
+                [self.Answer setHidden:NO];
+            }else{
+                [self.selectTheme setHidden:NO];
+                [self.Answer setHidden:YES];
+            }
         }else{
-            [self.selectTheme setHidden:NO];
+            [self.enemy_turn setHidden:NO];
+            [self.selectTheme setHidden:YES];
             [self.Answer setHidden:YES];
         }
     }

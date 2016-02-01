@@ -92,7 +92,6 @@
     NSDictionary *result    = [json objectForKey:@"result"];
     NSDictionary *payload   = [json objectForKey:@"payload"];
     
-//    NSLog(@"asd %@", json);
     if ([payload objectForKey:@"player"]){
         [appDelegate.user changed:[payload objectForKey:@"player"]];
     }
@@ -106,14 +105,15 @@
     if ([payload objectForKey:@"game"]){
 //        NSLog(@"payload game %@", payload);
         NSDictionary* game = [payload objectForKey:@"game"];
-        [appDelegate.game setQuestions:[game valueForKey:@"questions"]];
-//        [appDelegate.game setStep:[game valueForKey:@"step"]];
-        [appDelegate.game setGameId:[game valueForKey:@"id"]];
-        [appDelegate.game setTurn:[game valueForKey:@"turn"]];
-        [appDelegate.game setRounds:[game valueForKey:@"rounds"]];
-        [appDelegate.game setCurrent_round:[game valueForKey:@"current_round"]];
+        [appDelegate.gameFactory changedData:game];
         
-        [appDelegate.gameFactory changed:[game valueForKey:@"id"]];
+//        [appDelegate.game setQuestions:[game valueForKey:@"questions"]];
+//        [appDelegate.game setStep:[game valueForKey:@"step"]];
+        
+//        [appDelegate.game setTurn:[game valueForKey:@"turn"]];
+//        [appDelegate.game setRounds:[game valueForKey:@"rounds"]];
+//        [appDelegate.game setCurrent_round:[game valueForKey:@"current_round"]];
+        [appDelegate.game setGameId:[game valueForKey:@"id"]];
     }
     
     return result;

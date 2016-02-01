@@ -56,9 +56,11 @@ NSArray *games;
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     Game *game = appDelegate.game;
     
-    int index = indexPath.row;
+    NSInteger *index = indexPath.row;
+//    NSLog(@" %@", indexPath);
+//    return indexPath;
+//    int index = [indexPath.row integerValue];
     NSDictionary *current = [games objectAtIndex:index];
-    
     
     [game setGameId:[current valueForKey:@"id"]];
     

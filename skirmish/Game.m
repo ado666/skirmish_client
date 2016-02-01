@@ -41,14 +41,7 @@
                            nil];
 
     
-    NSDictionary *response = [net post:@"/game/theme_select" : extra];
-    
-//    NSLog(@"%@", response);
-    
-//    NSDictionary *extra = [NSDictionary dictionaryWithObjectsAndKeys:
-//                           dtoken, @"push_id",
-//                           nil];
-//    [self.networker post:@"/player/hello" :extra];
+    [net post:@"/game/theme_select" : extra];
 }
 
 - (void) changed:(NSString *)entityId{
@@ -88,29 +81,28 @@
 }
 
 @synthesize turn = _turn;
-- (void) setTurn:(NSString*)turn {
+- (void) setTurn:(NSDictionary*)turn {
     _turn = turn;
 }
-- (NSString*) turn {
+- (NSDictionary*) turn {
     return _turn;
 }
 
 @synthesize gameId = _gameId;
 - (void) setGameId:(NSNumber*)gameId {
 //    NSLog(@"set game %@", gameId);
-    
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     GameFactory *gf = appDelegate.gameFactory;
-    
+//
     NSDictionary *data = [gf get:gameId];
 //
 //    NSDictionary *data = [net post:@"/game/get" :[NSDictionary dictionaryWithObjectsAndKeys:gameId, @"entityId", nil]];
 //
     
+    NSLog(@"data = %@", gameId);
     [self setPlayers:[data valueForKey:@"players"]];
     [self setRounds:[data valueForKey:@"rounds"]];
     [self setCurrent_round:[data valueForKey:@"current_round"]];
-    
     
     _gameId = gameId;
 }

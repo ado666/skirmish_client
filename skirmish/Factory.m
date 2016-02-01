@@ -24,11 +24,11 @@
 - (NSDictionary*) get:(NSNumber *)entityId{
     NSDictionary *game;
     for (id object in self.entities) {
-        if ([[self.entities valueForKey:object] valueForKey:@"id"] == entityId){
+//        NSLog(@"---- %@ %@", [[self.entities valueForKey:object] valueForKey:@"id"], entityId);
+        if ([[[self.entities valueForKey:object] valueForKey:@"id"] integerValue] == [entityId integerValue]){
             game = [self.entities valueForKey:object];
         }
     }
-    
     return game;
 }
 
@@ -53,6 +53,12 @@
     NSDictionary *result    = [net get:self.url :extra];
     
     [self.entities setObject:[result valueForKey:@"entity"] forKey:ent];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"entities" object:nil];
+}
+
+- (void) changedData:(NSDictionary *)data{
+    [self.entities setObject:data forKey:[data valueForKey:@"id"]];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"entities" object:nil];
 }

@@ -15,7 +15,7 @@
 
 @property (nonatomic) NSString* status;
 
-@property (nonatomic) NSString* turn;
+@property (nonatomic) NSDictionary* turn;
 @property (nonatomic) NSString* step;
 @property (nonatomic) NSNumber* gameId;
 

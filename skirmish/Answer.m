@@ -45,20 +45,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     Game *game = appDelegate.game;
-
-    NSDictionary *cr = [game valueForKey:@"current_round"];
-    NSArray *qs = [cr valueForKey:@"questions"];
-    
-    NSDictionary *cq = [qs objectAtIndex: [[cr valueForKey:@"step"] integerValue]-1];
-    
-    self.question.text = [cq valueForKey:@"question"];
-    self.answer1.text = [cq valueForKey:@"answer1"];
-    self.answer2.text = [cq valueForKey:@"answer2"];
-    self.answer3.text = [cq valueForKey:@"answer3"];
-    self.answer4.text = [cq valueForKey:@"answer4"];
     
     UIGestureRecognizer *answer1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doAnswer1:)];
     UIGestureRecognizer *answer2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doAnswer2:)];
@@ -69,6 +57,22 @@
     [self.answer2 addGestureRecognizer: answer2];
     [self.answer3 addGestureRecognizer: answer3];
     [self.answer4 addGestureRecognizer: answer4];
+    
+    
+    NSDictionary *cr = [game valueForKey:@"current_round"];
+    //    NSLog(@"cr is %@", cr);
+    NSArray *qs = [cr valueForKey:@"questions"];
+    if ([qs count] == 0){
+        return;
+    };
+    
+    NSDictionary *cq = [qs objectAtIndex: [[cr valueForKey:@"step"] integerValue]-1];
+    
+    self.question.text = [cq valueForKey:@"question"];
+    self.answer1.text = [cq valueForKey:@"answer1"];
+    self.answer2.text = [cq valueForKey:@"answer2"];
+    self.answer3.text = [cq valueForKey:@"answer3"];
+    self.answer4.text = [cq valueForKey:@"answer4"];
     
 //    NSLog(@"status %@", [cr valueForKey:@"step"]);
     

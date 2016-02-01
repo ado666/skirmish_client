@@ -119,6 +119,7 @@
     
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     User *user = appDelegate.user;
+    Game *game = appDelegate.game;
     GameFactory *gf = appDelegate.gameFactory;
     
     NSDictionary *data  = [userInfo objectForKey:@"apn"];
@@ -131,6 +132,10 @@
         
         if ([entity isEqualToString:@"user"]){
             [user needUpdate:entity_id];
+        }
+        if ([entity isEqualToString:@"game"]){
+            [gf changed:entity_id];
+//            game.gameId = entity_id;
         }
     }
     

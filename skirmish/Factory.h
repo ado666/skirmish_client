@@ -15,6 +15,7 @@
 
 - (void) all: (NSArray*)data;
 - (void) changed :(NSNumber*) entityId;
+- (void) changedData :(NSDictionary*) data;
 - (NSDictionary*) get :(NSNumber*) entityId;
 
 @end
