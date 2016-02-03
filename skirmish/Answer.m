@@ -73,13 +73,6 @@
     self.answer2.text = [cq valueForKey:@"answer2"];
     self.answer3.text = [cq valueForKey:@"answer3"];
     self.answer4.text = [cq valueForKey:@"answer4"];
-    
-//    NSLog(@"status %@", [cr valueForKey:@"step"]);
-    
-//    [game addObserver:self forKeyPath:@"current_round" options:NSKeyValueObservingOptionNew context:nil];
-
-    
-//    UIGestureRecognizer *answerHandler = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doAnswer:)];
 }
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
@@ -89,16 +82,8 @@
     
     if ([keyPath isEqualToString:@"current_round"]) {
         NSDictionary *cr = [change valueForKey:@"new"];
-//        NSLog(@"status %@", [cr valueForKey:@"step"]);
-//        if ([data objectForKey:@"theme"] != NULL){
-//            [self.selectTheme setHidden:YES];
-//            [self.Answer setHidden:NO];
-//        }else{
-//            [self.selectTheme setHidden:NO];
-//            [self.Answer setHidden:YES];
-//        }
+//        NSLog(@"asd %@", cr);
         
-//        NSDictionary *cr = [game valueForKey:@"current_round"];
         NSArray *qs = [cr valueForKey:@"questions"];
         
         NSDictionary *cq = [qs objectAtIndex: [[cr valueForKey:@"step"] integerValue]-1];
@@ -113,7 +98,6 @@
 
 
 - (void) doAnswer: (NSInteger) choice {
-//    NSLog(@"tap %ld", (long)choice);
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     Networker *net = appDelegate.networker;
     Game *game = appDelegate.game;

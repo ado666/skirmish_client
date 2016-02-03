@@ -135,7 +135,6 @@
         }
         if ([entity isEqualToString:@"game"]){
             [gf changed:entity_id];
-//            game.gameId = entity_id;
         }
     }
     

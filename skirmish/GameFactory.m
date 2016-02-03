@@ -34,10 +34,9 @@
     
     [self.entities setObject:[result valueForKey:@"entity"] forKey:ent];
     
-//    NSLog(@" %@ %@", entityId, game.gameId);
     if ([entityId integerValue] == [game.gameId integerValue]){
 //        NSLog(@"eqal");
-        game.gameId = entityId;
+        game.gameId = [[result valueForKey:@"entity"] valueForKey:@"id"];
     }
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"entities" object:nil];

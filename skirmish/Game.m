@@ -98,8 +98,6 @@
 //
 //    NSDictionary *data = [net post:@"/game/get" :[NSDictionary dictionaryWithObjectsAndKeys:gameId, @"entityId", nil]];
 //
-    
-    NSLog(@"data = %@", gameId);
     [self setPlayers:[data valueForKey:@"players"]];
     [self setRounds:[data valueForKey:@"rounds"]];
     [self setCurrent_round:[data valueForKey:@"current_round"]];

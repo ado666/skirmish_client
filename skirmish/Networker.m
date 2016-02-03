@@ -17,9 +17,12 @@
     NSString *extraString = @"";
     for (NSString* key in data) {
         id value = [data objectForKey:key];
+//        NSString *strvalue = (NSString *)value;
+        NSString *strvalue = [[NSString alloc] initWithString:value];
+        NSLog(@"asd %i", [strvalue isKindOfClass:[NSString class]]);
         extraString = [extraString stringByAppendingString:key];
         extraString = [extraString stringByAppendingString:@"="];
-        extraString = [extraString stringByAppendingString:value];
+        extraString = [extraString stringByAppendingString:strvalue];
         extraString = [extraString stringByAppendingString:@"&"];
     }
     return extraString;
@@ -27,8 +30,6 @@
 
 -(NSDictionary*) get: (NSString*)url :(NSDictionary *)extra
 {
-    NSLog(@"%@ %@", url, extra);
-    
     UIApplication *app = [[UIApplication sharedApplication] delegate];
     NSString *dtoken = [NSString stringWithFormat:@"%@", [app valueForKey:@"device_token"]];
     url = [@"http://91.225.238.186:10000" stringByAppendingString:url];
@@ -62,7 +63,7 @@
 {
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSString *dtoken = [NSString stringWithFormat:@"%@", [appDelegate valueForKey:@"device_token"]];
-
+    
     url = [@"http://91.225.238.186:10000" stringByAppendingString:url];
     
     NSString *extraString = [self dictToString: extra];
@@ -113,7 +114,7 @@
 //        [appDelegate.game setTurn:[game valueForKey:@"turn"]];
 //        [appDelegate.game setRounds:[game valueForKey:@"rounds"]];
 //        [appDelegate.game setCurrent_round:[game valueForKey:@"current_round"]];
-        [appDelegate.game setGameId:[game valueForKey:@"id"]];
+        appDelegate.game.gameId = [game valueForKey:@"id"];
     }
     
     return result;
