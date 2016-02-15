@@ -93,6 +93,8 @@
     NSDictionary *result    = [json objectForKey:@"result"];
     NSDictionary *payload   = [json objectForKey:@"payload"];
     
+//    NSLog(@"json %@", json);
+    
     if ([payload objectForKey:@"player"]){
         [appDelegate.user changed:[payload objectForKey:@"player"]];
     }
@@ -122,6 +124,8 @@
     return [[NSDictionary alloc] init];
     
     NSDictionary* income_data = [json objectForKey:@"data"];
+    
+    
     
 //    [appDelegate.user setName:[income_data valueForKey:@"username"]];
 //    [appDelegate.user setStatus:[income_data valueForKey:@"status"]];

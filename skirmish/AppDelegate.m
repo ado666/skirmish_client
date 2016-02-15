@@ -115,7 +115,7 @@
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
-    NSLog(@"remote notification %@", userInfo);
+//    NSLog(@"remote notification %@", userInfo);
     
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     User *user = appDelegate.user;

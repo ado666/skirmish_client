@@ -58,7 +58,6 @@
     [self.answer3 addGestureRecognizer: answer3];
     [self.answer4 addGestureRecognizer: answer4];
     
-    
     NSDictionary *cr = [game valueForKey:@"current_round"];
     //    NSLog(@"cr is %@", cr);
     NSArray *qs = [cr valueForKey:@"questions"];
@@ -85,6 +84,10 @@
 //        NSLog(@"asd %@", cr);
         
         NSArray *qs = [cr valueForKey:@"questions"];
+        
+        if ([qs count] == 0){
+            return;
+        }
         
         NSDictionary *cq = [qs objectAtIndex: [[cr valueForKey:@"step"] integerValue]-1];
         

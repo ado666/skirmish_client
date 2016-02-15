@@ -43,6 +43,7 @@
     if ([[owner valueForKey:@"userId"] isEqualToNumber:[user valueForKey:@"userId"]]){
         [self.enemy_turn setHidden:YES];
         
+        NSLog(@"init %@", current_round);
         if ([current_round objectForKey:@"theme"] != [NSNull null]){
             [self.selectTheme setHidden:YES];
             [self.Answer setHidden:NO];
@@ -66,10 +67,14 @@
         NSDictionary *data = [change valueForKey:@"new"];
         if ([[[data valueForKey:@"turn"] valueForKey:@"userId"] isEqualToNumber:[user valueForKey:@"userId"]]){
             [self.enemy_turn setHidden:YES];
-            if ([data objectForKey:@"theme"] != NULL){
+//            NSLog(@"theme %@", data);
+//            if ([data objectForKey:@"theme"] != NULL){
+            if ([data objectForKey:@"theme"] != [NSNull null]){
+//                NSLog(@"1");
                 [self.selectTheme setHidden:YES];
                 [self.Answer setHidden:NO];
             }else{
+//                NSLog(@"2");
                 [self.selectTheme setHidden:NO];
                 [self.Answer setHidden:YES];
             }
