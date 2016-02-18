@@ -100,6 +100,7 @@
     }
     
     if ([payload objectForKey:@"games"]){
+//        NSLog(@"ggg %@", [payload valueForKey:@"games"]);
         [appDelegate.gameFactory all:[payload objectForKey:@"games"]];
 //        [appDelegate.gameFactory setValue:[payload objectForKey:@"games"] forKey:@"entities"];
 //        [[NSNotificationCenter defaultCenter] postNotificationName:@"entities" object:nil];

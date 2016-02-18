@@ -85,6 +85,7 @@ NSArray *games;
         return [second compare:first];
     }];
     
+//    NSLog(@" %@ ", array);
     games = array;
     [self.gameList reloadData];
 }

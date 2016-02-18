@@ -13,7 +13,7 @@
 - (void) changed :(NSString*) entityId;
 - (void) selectTheme :(NSInteger*) themeId;
 
-@property (nonatomic) NSString* status;
+@property (nonatomic) NSNumber* status;
 
 @property (nonatomic) NSDictionary* turn;
 @property (nonatomic) NSString* step;

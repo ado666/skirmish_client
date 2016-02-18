@@ -21,8 +21,6 @@
 
 @implementation Game
 
-@synthesize status = _status;
-
 - (void) selectTheme:(NSInteger*)themeId{
     NSArray *themes = [self.current_round valueForKey:@"themes"];
     NSDictionary* founded;
@@ -73,10 +71,11 @@
     return _players;
 }
 
-- (void) setStatus:(NSString*)status {
+@synthesize status = _status;
+- (void) setStatus:(NSNumber*)status {
     _status = status;
 }
-- (NSString*) status {
+- (NSNumber*) status {
     return _status;
 }
 
@@ -97,10 +96,11 @@
     NSDictionary *data = [gf get:gameId];
 //
 //    NSDictionary *data = [net post:@"/game/get" :[NSDictionary dictionaryWithObjectsAndKeys:gameId, @"entityId", nil]];
-//
+    
     [self setPlayers:[data valueForKey:@"players"]];
     [self setRounds:[data valueForKey:@"rounds"]];
     [self setCurrent_round:[data valueForKey:@"current_round"]];
+    [self setStatus:[data valueForKey:@"status"]];
     
     _gameId = gameId;
 }

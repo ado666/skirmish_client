@@ -75,9 +75,9 @@
 }
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    Game *game = appDelegate.game;
-    User *user = appDelegate.user;
+//    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//    Game *game = appDelegate.game;
+//    User *user = appDelegate.user;
     
     if ([keyPath isEqualToString:@"current_round"]) {
         NSDictionary *cr = [change valueForKey:@"new"];
